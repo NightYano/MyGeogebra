@@ -8,9 +8,9 @@ import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.awt.*;
 
-public class MyGeogebra extends JFrame {
+public class MyWindow extends JFrame {
 
-    public MyGeogebra(String title){
+    public MyWindow(String title){
         super(title);
     }
 
@@ -21,6 +21,7 @@ public class MyGeogebra extends JFrame {
         setVisible(true);
     }
 
+    // GUI METHODS
     private void setPanels(){
         JPanel contentPane = (JPanel) getContentPane();
         LayoutManager layout = new BorderLayout();
@@ -31,7 +32,7 @@ public class MyGeogebra extends JFrame {
     }
 
     private void setLookAndFeel(){
-       try {
+        try {
             UIManager.setLookAndFeel(new NimbusLookAndFeel());
         }catch (UnsupportedLookAndFeelException ignored){}
     }

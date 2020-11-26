@@ -1,12 +1,10 @@
 package GUI.Panels;
 
 
+import Main.MyGeogebra;
+
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /** This class is the south panel of the application, it contains an input where the user writes the function to display
  *  This class is a singleton.
@@ -18,7 +16,6 @@ public class InputPanel extends JPanel {
      * The instance (singleton) of the InputPanel.
      */
     private static InputPanel inputPanel;
-    private static String inputText;
 
     /**
      * The constructor of the singleton. Generate all the panel
@@ -86,6 +83,6 @@ public class InputPanel extends JPanel {
      * @param input The function as a string
      */
     private void onclick(String input){
-        System.out.println(input);
+        MyGeogebra.getInstance().submitFunction(input);
     }
 }
