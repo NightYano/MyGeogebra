@@ -1,7 +1,10 @@
 package Main;
 
 import GUI.MyWindow;
-import Geometric.GeometricFuncion;
+import GUI.Panels.LinePrinter;
+import Geometric.GeometricFunction;
+
+import java.awt.*;
 
 public class MyGeogebra {
     private static MyGeogebra myGeogebra;
@@ -19,8 +22,10 @@ public class MyGeogebra {
     //SYSTEM
     public void submitFunction(String input){
         System.out.println(this.getClass()+" : "+ input);
-        GeometricFuncion function = new GeometricFuncion(input);
+        GeometricFunction function = new GeometricFunction(input);
         System.out.println(input +" --> is valid : "+ function.isValid());
+        Dimension dimension = LinePrinter.getInstance().getDimension();
+        function.calculateLine(dimension.width);
     }
 
     //MAIN
