@@ -1,7 +1,12 @@
 package Geometric;
 
+import Util.Pair;
+
+import java.awt.*;
+
 public class Line {
     private Point[] points;
+
 
     public Line(int size){
         points = new Point[size];
@@ -25,6 +30,40 @@ public class Line {
 
     public int getSize(){
         return this.points.length;
+    }
+
+    public Pair<Double, Double> getYExtremum(){
+        return new Pair<>(getMinY(), getMaxY());
+    }
+
+    private double getMaxY(){
+        double maxY = points[0].getY();
+        for (Point point:points) {
+            if(point.getY() > maxY)
+                maxY = point.getY();
+        }
+        return maxY;
+    }
+
+    private double getMinY(){
+        double minY = points[0].getY();
+        for (Point point:points) {
+            if(point.getY() < minY)
+                minY = point.getY();
+        }
+        return minY;
+    }
+
+    public Line toPixelLine(Dimension canvasDimension){
+        //TODO test Line.toPixelLine and Point.toPixelPoint
+        Pair<Double, Double> YExtremum = getYExtremum();
+        Point minPoint = new Point(points[0].getX(), YExtremum.getVal1()), maxPoint = new Point(points[getSize()].getX(), YExtremum.getVal2());
+
+        Line pixelLine = new Line(getSize());
+        for (int index = 0; index < getSize(); index++) {
+            pixelLine.setPoint(index, points[index].toPixelPoint(canvasDimension, minPoint, maxPoint));
+        }
+        return pixelLine;
     }
 
     @Override
