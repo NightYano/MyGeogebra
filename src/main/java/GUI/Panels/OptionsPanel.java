@@ -47,8 +47,8 @@ public class OptionsPanel extends JPanel {
     }
 
     public Pair<Double, Double> getRange() throws IllegalArgumentException{
-        Pair<Double, Double> pair = new Pair<Double, Double>();
-        Double xmin, xmax;
+        Pair<Double, Double> pair = new Pair<>();
+        double xmin, xmax;
         xmin = Double.parseDouble(this.xmin.getText());
         xmax = Double.parseDouble(this.xmax.getText());
 
