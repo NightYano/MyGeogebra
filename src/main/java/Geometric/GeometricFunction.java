@@ -1,5 +1,6 @@
 package Geometric;
 
+import Util.Pair;
 import org.mariuszgromada.math.mxparser.Argument;
 import org.mariuszgromada.math.mxparser.Expression;
 
@@ -25,12 +26,21 @@ public class GeometricFunction {
         this.xMax = xMax;
     }
 
+    public void setRange(Pair<Double, Double> pair){
+        setRange(pair.getVal1(), pair.getVal2());
+    }
+
     public Line getLine() {
         if(line != null) throw new NullPointerException("Line has not been calculated");
         return line;
     }
 
+    /**
+     *
+     * @param nbPixels
+     */
     public void calculateLine(int nbPixels){
+
         line = new Line(nbPixels);
         for (int i = 0; i < line.getSize(); i++) {
             line.setPoint(i, calculatePoint(nbPixels, i));

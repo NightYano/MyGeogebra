@@ -1,10 +1,14 @@
 package Main;
 
+import Exceptions.InvalidFunctionException;
 import GUI.MyWindow;
 import GUI.Panels.LinePrinter;
+import GUI.Panels.OptionsPanel;
 import Geometric.GeometricFunction;
+import Util.Pair;
 
 import java.awt.*;
+import java.util.Optional;
 
 public class MyGeogebra {
     private static MyGeogebra myGeogebra;
@@ -21,11 +25,12 @@ public class MyGeogebra {
 
     //SYSTEM
     public void submitFunction(String input){
-        System.out.println(this.getClass()+" : "+ input);
         GeometricFunction function = new GeometricFunction(input);
-        System.out.println(input +" --> is valid : "+ function.isValid());
+        if(!function.isValid()) throw new InvalidFunctionException("The input function is not valid");
+        function.setRange(OptionsPanel.getInstance().getRange());
         Dimension dimension = LinePrinter.getInstance().getDimension();
         function.calculateLine(dimension.width);
+        System.out.println(function);
     }
 
     //MAIN

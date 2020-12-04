@@ -30,7 +30,6 @@ public class OptionsPanel extends JPanel {
     private void generateOptions(){
         JLabel text = new JLabel("<html><h1>OPTIONS</h1></html>");
         add(text);
-        //TODO add xmin-xmax options
         JTextField xmin = new JTextField();
         JTextField xmax = new JTextField();
         JLabel xminLabel = new JLabel("xmin : ");
