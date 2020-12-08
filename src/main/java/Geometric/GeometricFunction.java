@@ -31,7 +31,7 @@ public class GeometricFunction {
     }
 
     public Line getLine() {
-        if(line != null) throw new NullPointerException("Line has not been calculated");
+        if(line == null) throw new NullPointerException("Line has not been calculated");
         return line;
     }
 

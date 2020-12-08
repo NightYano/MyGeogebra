@@ -1,5 +1,10 @@
 package GUI.Panels;
 
+import Geometric.Axis;
+import Geometric.GeometricFunction;
+import Geometric.Line;
+import Geometric.Point;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,6 +15,8 @@ import java.awt.*;
  */
 public class LinePrinter extends JPanel {
     private static LinePrinter linePrinter;
+    private Axis axes;
+    private GeometricFunction function;
 
     private LinePrinter(){}
 
@@ -28,5 +35,26 @@ public class LinePrinter extends JPanel {
 
     public Dimension getDimension(){
         return new Dimension(getWidth(), getHeight());
+    }
+
+    @Override
+    public void update(Graphics g) {
+        if(axes!=null) printAxis(g);
+        if(function!=null){
+            printFunctionLabel(g);
+            printFunction(g);
+        }
+    }
+
+    private void printAxis(Graphics g){
+
+    }
+
+    private void printFunction(Graphics g){
+
+    }
+
+    private void printFunctionLabel(Graphics g){
+
     }
 }

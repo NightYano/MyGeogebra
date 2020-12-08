@@ -27,6 +27,10 @@ public class Line {
     public Point[] getPoints() {
         return points;
     }
+    public Point getPoint(int index){
+        if(index <0 || index >= getSize()) throw  new NullPointerException("Index out of range for points");
+        return points[index];
+    }
 
     public int getSize(){
         return this.points.length;
@@ -57,7 +61,7 @@ public class Line {
     public Line toPixelLine(Dimension canvasDimension){
         //TODO test Line.toPixelLine and Point.toPixelPoint
         Pair<Double, Double> YExtremum = getYExtremum();
-        Point minPoint = new Point(points[0].getX(), YExtremum.getVal1()), maxPoint = new Point(points[getSize()].getX(), YExtremum.getVal2());
+        Point minPoint = new Point(points[0].getX(), YExtremum.getVal1()), maxPoint = new Point(points[getSize()-1].getX(), YExtremum.getVal2());
 
         Line pixelLine = new Line(getSize());
         for (int index = 0; index < getSize(); index++) {
